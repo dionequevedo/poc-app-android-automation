@@ -1,0 +1,26 @@
+
+17:55:15 [browserstack_sdk.__init__][INFO] - Using App : bs://683f98a1523a6e2db48b07736f38105a746ce588.
+
+17:55:15 [browserstack_sdk.__init__][INFO] - Project and debug logs are captured by default. To disable, set disableAutoCaptureLogs: true in config.
+
+17:55:25 [browserstack_sdk.__init__][INFO] - Setting up for Browserstack, using framework: robot
+==============================================================================
+Suites                                                                        
+==============================================================================
+Suites.Cart-Browserstack :: Cart test suite.                                  
+==============================================================================
+Being able to access the empty cart :: This test validates access ... 
+17:55:25 [browserstack_sdk.__init__][INFO] - Completed setup!
+| PASS |
+------------------------------------------------------------------------------
+Suites.Cart-Browserstack :: Cart test suite.                          | PASS |
+1 test, 1 passed, 0 failed
+==============================================================================
+Suites                                                                | PASS |
+1 test, 1 passed, 0 failed
+==============================================================================
+Output:  C:\Users\dione.araujo.quevedo\OneDrive - Avanade\Projetos\NATURA\POC\poc-app-android-automation\logs\browserstack\pabot_results\0\output.xml
+
+17:56:08 [browserstack_sdk.__init__][INFO] - Handling session close
+
+17:56:08 [browserstack_sdk.__init__][INFO] - All done!

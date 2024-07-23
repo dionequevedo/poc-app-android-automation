@@ -1,7 +1,7 @@
-datasources:b8a5681be6e0d3c4651e9725fe268563f98e18be
-commandlineoptions:a997a8ace916a46a4d0035ce0059a5025b0f46b4
+datasources:db17e492efd0122ea308971e53f47790a8af16f0
+commandlineoptions:d4032dc5ed4db16bbe30231d2d5236d9217470ba
 suitesfrom:no-suites-from-option
-file:9e790c788ee2f48c560ccd85323d2cfcdf3fdd17
---suite Tests.Products
---suite Tests.Cart
---suite Tests.Login
+file:c3b994076676ade711e5d0843ec848483059e592
+--suite Suites.Cart-Browserstack
+--suite Suites.Login-Browserstack
+--suite Suites.Products-Browserstack

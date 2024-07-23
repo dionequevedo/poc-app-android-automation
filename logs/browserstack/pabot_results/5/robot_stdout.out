@@ -1,0 +1,42 @@
+
+17:58:02 [browserstack_sdk.__init__][INFO] - Using App : bs://683f98a1523a6e2db48b07736f38105a746ce588.
+
+17:58:02 [browserstack_sdk.__init__][INFO] - Project and debug logs are captured by default. To disable, set disableAutoCaptureLogs: true in config.
+
+17:58:12 [browserstack_sdk.__init__][INFO] - Setting up for Browserstack, using framework: robot
+==============================================================================
+Suites                                                                        
+==============================================================================
+Suites.Products-Browserstack :: Product screen test suite.                    
+==============================================================================
+Sort by asc price :: This test validates the ordering of products ... 
+17:58:12 [browserstack_sdk.__init__][INFO] - Completed setup!
+| PASS |
+------------------------------------------------------------------------------
+Sort by asc name :: This test validates ordering products in ascen... 
+17:58:53 [browserstack_sdk.__init__][INFO] - Completed setup!
+| PASS |
+------------------------------------------------------------------------------
+Sort by desc price :: This test validates the ordering of products... 
+17:59:25 [browserstack_sdk.__init__][INFO] - Completed setup!
+| PASS |
+------------------------------------------------------------------------------
+Sort by desc name :: This test validates ordering products in desc... 
+18:00:01 [browserstack_sdk.__init__][INFO] - Completed setup!
+| PASS |
+------------------------------------------------------------------------------
+Add two red backpacks to cart without logging in :: This test shou... 
+18:00:36 [browserstack_sdk.__init__][INFO] - Completed setup!
+| PASS |
+------------------------------------------------------------------------------
+Suites.Products-Browserstack :: Product screen test suite.            | PASS |
+5 tests, 5 passed, 0 failed
+==============================================================================
+Suites                                                                | PASS |
+5 tests, 5 passed, 0 failed
+==============================================================================
+Output:  C:\Users\dione.araujo.quevedo\OneDrive - Avanade\Projetos\NATURA\POC\poc-app-android-automation\logs\browserstack\pabot_results\5\output.xml
+
+18:01:15 [browserstack_sdk.__init__][INFO] - Handling session close
+
+18:01:15 [browserstack_sdk.__init__][INFO] - All done!

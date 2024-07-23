@@ -1,0 +1,30 @@
+
+17:56:14 [browserstack_sdk.__init__][INFO] - Using App : bs://683f98a1523a6e2db48b07736f38105a746ce588.
+
+17:56:14 [browserstack_sdk.__init__][INFO] - Project and debug logs are captured by default. To disable, set disableAutoCaptureLogs: true in config.
+
+17:56:23 [browserstack_sdk.__init__][INFO] - Setting up for Browserstack, using framework: robot
+==============================================================================
+Suites                                                                        
+==============================================================================
+Suites.Login-Browserstack :: Login screen test suite.                         
+==============================================================================
+Valid Login :: This test validates a valid login successfully.        
+17:56:23 [browserstack_sdk.__init__][INFO] - Completed setup!
+| PASS |
+------------------------------------------------------------------------------
+Validate Wrong Login :: This test validates a invalid login           
+17:57:05 [browserstack_sdk.__init__][INFO] - Completed setup!
+| PASS |
+------------------------------------------------------------------------------
+Suites.Login-Browserstack :: Login screen test suite.                 | PASS |
+2 tests, 2 passed, 0 failed
+==============================================================================
+Suites                                                                | PASS |
+2 tests, 2 passed, 0 failed
+==============================================================================
+Output:  C:\Users\dione.araujo.quevedo\OneDrive - Avanade\Projetos\NATURA\POC\poc-app-android-automation\logs\browserstack\pabot_results\3\output.xml
+
+17:57:43 [browserstack_sdk.__init__][INFO] - Handling session close
+
+17:57:43 [browserstack_sdk.__init__][INFO] - All done!
