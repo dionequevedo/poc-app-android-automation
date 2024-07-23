@@ -1,7 +1,7 @@
 # poc-app-android-automation
-Exemplo de automação de testes em um APP android
+## Exemplo de automação de testes em um APP android
 
-Para executar os testes do APP (Android-MyDemoAppRN.1.3.0.build-244.apk) usando Robot Framework e Appium, siga as etapas abaixo:
+Para executar os testes do APP (**Android-MyDemoAppRN.1.3.0.build-244.apk**) usando **Robot Framework** e **Appium**, siga as etapas abaixo:
 
 1. Certifique-se de ter o Robot Framework e o Appium instalados em seu ambiente de desenvolvimento.
 
@@ -21,6 +21,7 @@ Para executar os testes do APP (Android-MyDemoAppRN.1.3.0.build-244.apk) usando 
     ```
     npx appium
     ```
+    
 6. Identifique os emuladores disponíveis no ambiente através do comando:
     ```
     emulator -list-avds
@@ -33,16 +34,16 @@ Para executar os testes do APP (Android-MyDemoAppRN.1.3.0.build-244.apk) usando 
 
 8. Abra um novo terminal e navegue até o diretório raiz do projeto de automação de testes.
 
-9. Execute os testes locais usando o seguinte comando:
+9. Execute os testes **`locais`** usando o seguinte comando:
     ```
     robot -d logs/local/ tests/*-local.robot
     ```
 
-10. Para testes remotos hospedados no BrowserStack use o seguinte comando:
+10. Para testes _remotos_ hospedados no **`BrowserStack`** use o seguinte comando:
     ```
     browserstack-sdk robot -d logs/browserstack/ tests/*browserstack.robot
     ```
 
 Isso executará todos os testes presentes no diretório `tests/` usando o Robot Framework e o Appium.
 
-Certifique-se de que o dispositivo Android esteja conectado ao computador e que as configurações de conexão estejam corretas no arquivo de configuração do Appium.
+Certifique-se de que o dispositivo avd esteja _on-line_ e que as configurações de conexão estejam corretas no arquivo de configuração do Appium.
