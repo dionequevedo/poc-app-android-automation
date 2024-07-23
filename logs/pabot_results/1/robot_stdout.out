@@ -1,0 +1,15 @@
+
+20:14:55 [browserstack_sdk.__init__][INFO] - Using App : bs://683f98a1523a6e2db48b07736f38105a746ce588.
+
+20:14:55 [browserstack_sdk.__init__][INFO] - Project and debug logs are captured by default. To disable, set disableAutoCaptureLogs: true in config.
+
+20:15:01 [browserstack_sdk.__init__][WARNING] - Please install robot, pabot and seleniumlibrary packages to run robot tests in parallel. `pip install robotframework robotframework-pabot robotframework-seleniumlibrary`No module named 'SeleniumLibrary'
+
+20:15:02 [browserstack_sdk.__init__][INFO] - Setting up for Browserstack, using framework: robot
+
+20:15:02 [browserstack_sdk.__init__][WARNING] - Please install robot, pabot and seleniumlibrary packages to run robot tests in parallel. `pip install robotframework robotframework-pabot robotframework-seleniumlibrary`No module named 'SeleniumLibrary'
+==============================================================================
+Login :: Login screen test suite.                                             
+==============================================================================
+Valid Login :: This test validates a valid login successfully.        
+20:15:02 [browserstack_sdk.__init__][INFO] - Completed setup!
