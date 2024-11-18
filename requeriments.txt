@@ -18,6 +18,7 @@ robotframework-pythonlibcore    4.4.1
 robotframework-screencaplibrary 1.6.0
 robotframework-seleniumlibrary  6.3.0
 robotframework-stacktrace       0.4.1
+robotframework-YAMLLibrary      0.2.8
 selenium                        4.16.0
 setuptools                      70.3.0
 uiautomator2                    3.1.2

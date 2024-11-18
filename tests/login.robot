@@ -1,16 +1,26 @@
 *** Settings ***
 Documentation       Login screen test suite.
 
-Resource                    ../resources/base-browserstack.resource
+Library                     YAMLLibrary
 
+Suite Setup                 Setup Environment
 Test Setup                  Start session
 Test Teardown               Finish session
 
-*** Variables ***
+Variables
 
+${CONFIG}                   Load YAML               ../config.yaml
+${ENVIRONMENT}              Set Global Variable     ${ENVIRONMENT}
 ${USER}                     bob@example.com
 ${CORRECT_PASSWORD}         10203040
 ${INCORRECT_PASSWORD}       40203040
+
+*** Keywords ***
+Setup Environment 
+    ${RESOURCE}             Get From Dictionary 
+    ...                     ${CONFIG}       ${ENVIRONMENT}  resource 
+
+Log                         Using resource: ${RESOURCE}
 
 *** Test Cases ***
 

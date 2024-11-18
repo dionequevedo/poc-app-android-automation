@@ -1,13 +1,23 @@
 *** Settings ***
 Documentation       Product screen test suite.
 
-Resource                    ../resources/base-local.resource
+Library                     YAMLLibrary
 
+Suite Setup                 Setup Environment
 Test Setup                  Start session
 Test Teardown               Finish session
 
-*** Variables ***
+Variables
 
+${CONFIG}                   Load YAML               ../config.yaml
+${ENVIRONMENT}              Set Global Variable     ${ENVIRONMENT}
+
+*** Keywords ***
+Setup Environment 
+    ${RESOURCE}             Get From Dictionary 
+    ...                     ${CONFIG}       ${ENVIRONMENT}  resource 
+
+Log                         Using resource: ${RESOURCE}
 
 *** Test Cases ***
 Sort by asc price
