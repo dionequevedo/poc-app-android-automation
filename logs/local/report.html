@@ -5,7 +5,7 @@
 <meta http-equiv="Pragma" content="no-cache">
 <meta http-equiv="Expires" content="-1">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta content="Robot Framework 7.0 (Python 3.12.1 on win32)" name="Generator">
+<meta content="Robot Framework 7.1 (Python 3.12.6 on win32)" name="Generator">
 <link rel="icon" type="image/x-icon" href="data:image/x-icon;base64,AAABAAEAEBAAAAEAIABoBAAAFgAAACgAAAAQAAAAIAAAAAEAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAKcAAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAAqAAAAAAAAAAAAAAAAAAAALIAAAD/AAAA4AAAANwAAADcAAAA3AAAANwAAADcAAAA3AAAANwAAADcAAAA4AAAAP8AAACxAAAAAAAAAKYAAAD/AAAAuwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAC/AAAA/wAAAKkAAAD6AAAAzAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAN8AAAD/AAAA+gAAAMMAAAAAAAAAAgAAAGsAAABrAAAAawAAAGsAAABrAAAAawAAAGsAAABrAAAADAAAAAAAAADaAAAA/wAAAPoAAADDAAAAAAAAAIsAAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAANEAAAAAAAAA2gAAAP8AAAD6AAAAwwAAAAAAAAAAAAAAMgAAADIAAAAyAAAAMgAAADIAAAAyAAAAMgAAADIAAAAFAAAAAAAAANoAAAD/AAAA+gAAAMMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADaAAAA/wAAAPoAAADDAAAAAAAAADwAAAB8AAAAAAAAAGAAAABcAAAAAAAAAH8AAABKAAAAAAAAAAAAAAAAAAAA2gAAAP8AAAD6AAAAwwAAAAAAAADCAAAA/wAAACkAAADqAAAA4QAAAAAAAAD7AAAA/wAAALAAAAAGAAAAAAAAANoAAAD/AAAA+gAAAMMAAAAAAAAAIwAAAP4AAAD/AAAA/wAAAGAAAAAAAAAAAAAAAMkAAAD/AAAAigAAAAAAAADaAAAA/wAAAPoAAADDAAAAAAAAAAAAAAAIAAAAcAAAABkAAAAAAAAAAAAAAAAAAAAAAAAAEgAAAAAAAAAAAAAA2gAAAP8AAAD7AAAAywAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAN4AAAD/AAAAqwAAAP8AAACvAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAALIAAAD/AAAAsgAAAAAAAAC5AAAA/wAAAMoAAADAAAAAwAAAAMAAAADAAAAAwAAAAMAAAADAAAAAwAAAAMkAAAD/AAAAvAAAAAAAAAAAAAAAAAAAAKwAAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAArQAAAAAAAAAAwAMAAIABAAAf+AAAP/wAAD/8AAAgBAAAP/wAAD/8AAA//AAAJIwAADHEAAA//AAAP/wAAB/4AACAAQAAwAMAAA==">
 <style media="all">
 :root {
@@ -1068,58 +1068,48 @@ window.stats = (function () {
             });
     }
     function calculatePercents(total, passed, failed, skipped) {
-        if (total == 0) {
+        if (total == 0)
             return [0.0, 0.0, 0.0];
-        }
         var pass = 100.0 * passed / total;
         var skip = 100.0 * skipped / total;
         var fail = 100.0 * failed / total;
         if (pass > 0 && pass < 0.1)
-            pass = 0.1
+            pass = 0.1;
         if (fail > 0 && fail < 0.1)
-            fail = 0.1
+            fail = 0.1;
         if (skip > 0 && skip < 0.1)
-            skip = 0.1
+            skip = 0.1;
         if (pass > 99.95 && pass < 100)
-            pass = 99.9
+            pass = 99.9;
         if (fail > 99.95 && fail < 100)
-            fail = 99.9
+            fail = 99.9;
         if (skip > 99.95 && skip < 100)
-            skip = 99.9
-        return [Math.round(pass*10)/10, Math.round(skip*10)/10, Math.round(fail*10)/10];
+            skip = 99.9;
+        return [round1(pass), round1(skip), round1(fail)];
     }
     function calculateWidths(num1, num2, num3) {
         if (num1 + num2 + num3 === 0)
             return [0.0, 0.0, 0.0];
         // Make small percentages better visible
         if (num1 > 0 && num1 < 1)
-            num1 = 1
+            num1 = 1.0;
         if (num2 > 0 && num2 < 1)
-            num2 = 1
+            num2 = 1.0;
         if (num3 > 0 && num3 < 1)
-            num3 = 1
+            num3 = 1.0;
         // Handle situation where some are rounded up
         while (num1 + num2 + num3 > 100) {
-            if (num1 > num2 && num1 > num3)
-                num1 -= 0.1;
-            else if (num2 > num1 && num2 > num3)
-                num2 -= 0.1;
-            else if (num3 > num1 && num3 > num2)
-                num3 -= 0.1;
-            else if (num1 > num3 && num1 == num2) {
-                num1 -= 0.1;
-                num2 -= 0.1;
-            }
-            else if (num1 > num2 && num1 == num3) {
-                num1 -= 0.1;
-                num3 -= 0.1;
-            }
-            else if (num2 > num1 && num2 == num3) {
-                num2 -= 0.1;
-                num3 -= 0.1;
-            }
+            if (num1 >= num2 && num1 >= num3)
+                num1 = round1(num1 - 0.1);
+            else if (num2 >= num1 && num2 >= num3)
+                num2 = round1(num2 - 0.1);
+            else
+                num3 = round1(num3 - 0.1);
         }
-        return [Math.ceil(num1*10)/10, Math.ceil(num2*10)/10, Math.ceil(num3*10)/10];
+        return [num1, num2, num3];
+    }
+    function round1(num) {
+        return Math.round(num*10) / 10;
     }
     return {
         Statistics: Statistics
@@ -1897,22 +1887,22 @@ storage = function () {
 window.output = {};
 </script>
 <script type="text/javascript">
-window.output["suite"] = [1,0,0,0,[],[1,0,200276],[[2,3,4,5,[],[1,35,34016],[],[[6,0,7,[],[1,487,33563],[]]],[],[1,1,0,0]],[8,9,10,11,[],[1,34052,53522],[],[[12,0,13,[],[1,34066,26704],[]],[14,0,15,[],[1,60772,26800],[]]],[],[2,2,0,0]],[16,17,18,19,[],[1,87576,112698],[],[[20,0,21,[],[1,87724,22969],[]],[22,0,23,[],[1,110693,20655],[]],[24,0,25,[],[1,131349,22376],[]],[26,0,27,[],[1,153725,21289],[]],[28,0,29,[30],[1,175015,25258],[]]],[],[5,5,0,0]]],[],[],[8,8,0,0]];
+window.output["suite"] = [1,2,3,0,[],[1,0,219185],[[4,5,6,7,[],[1,35,26901],[],[[8,0,9,[],[1,304,26630],[]]],[],[1,1,0,0]],[10,11,12,13,[],[1,26936,58364],[],[[14,0,15,[],[1,26950,30342],[]],[16,0,17,[],[1,57294,28007],[]]],[],[2,2,0,0]],[18,19,20,21,[],[1,85302,133881],[],[[22,0,23,[],[1,85310,25143],[]],[24,0,25,[],[1,110454,27012],[]],[26,0,27,[],[1,137467,24834],[]],[28,0,29,[],[1,162303,26808],[]],[30,0,31,[32],[1,189113,30070],[]]],[],[5,5,0,0]]],[],[],[8,8,0,0]];
 </script>
 <script type="text/javascript">
 window.output["strings"] = [];
 </script>
 <script type="text/javascript">
-window.output["strings"] = window.output["strings"].concat(["*","*Cart-Local &amp; Login-Local &amp; Products-Local","*Cart-Local","*C:\\Users\\dione.araujo.quevedo\\OneDrive - Avanade\\Projetos\\NATURA\\POC\\poc-app-android-automation\\tests\\cart-local.robot","*../tests/cart-local.robot","*<p>Cart test suite.\x3c/p>","*Being able to access the empty cart","*<p>This test validates access to the empty cart\x3c/p>","*Login-Local","*C:\\Users\\dione.araujo.quevedo\\OneDrive - Avanade\\Projetos\\NATURA\\POC\\poc-app-android-automation\\tests\\login-local.robot","*../tests/login-local.robot","*<p>Login screen test suite.\x3c/p>","*Valid Login","*<p>This test validates a valid login successfully.\x3c/p>","*Validate Wrong Login","*<p>This test validates a invalid login\x3c/p>","*Products-Local","*C:\\Users\\dione.araujo.quevedo\\OneDrive - Avanade\\Projetos\\NATURA\\POC\\poc-app-android-automation\\tests\\products-local.robot","*../tests/products-local.robot","*<p>Product screen test suite.\x3c/p>","*Sort by asc price","*<p>This test validates the ordering of products by increasing price\x3c/p>","*Sort by asc name","*<p>This test validates ordering products in ascending order by name\x3c/p>","*Sort by desc price","*<p>This test validates the ordering of products by decreasing price\x3c/p>","*Sort by desc name","*<p>This test validates ordering products in descending order by name\x3c/p>","*Add two red backpacks to cart without logging in","*<p>This test should validate the addition of two red backpacks to the cart\x3c/p>","*SELECT_ITEM"]);
+window.output["strings"] = window.output["strings"].concat(["*","*Tests","*C:\\Users\\dione.araujo.quevedo\\OneDrive - Avanade\\Projetos\\NATURA\\POC\\poc-app-android-automation\\tests","*../../tests","*Cart","*C:\\Users\\dione.araujo.quevedo\\OneDrive - Avanade\\Projetos\\NATURA\\POC\\poc-app-android-automation\\tests\\cart.robot","*../../tests/cart.robot","*<p>Cart test suite.\x3c/p>","*Being able to access the empty cart","*<p>This test validates access to the empty cart\x3c/p>","*Login","*C:\\Users\\dione.araujo.quevedo\\OneDrive - Avanade\\Projetos\\NATURA\\POC\\poc-app-android-automation\\tests\\login.robot","*../../tests/login.robot","*<p>Login screen test suite.\x3c/p>","*Valid Login","*<p>This test validates a valid login successfully.\x3c/p>","*Validate Wrong Login","*<p>This test validates a invalid login\x3c/p>","*Products","*C:\\Users\\dione.araujo.quevedo\\OneDrive - Avanade\\Projetos\\NATURA\\POC\\poc-app-android-automation\\tests\\products.robot","*../../tests/products.robot","*<p>Product screen test suite.\x3c/p>","*Sort by asc price","*<p>This test validates the ordering of products by increasing price\x3c/p>","*Sort by asc name","*<p>This test validates ordering products in ascending order by name\x3c/p>","*Sort by desc price","*<p>This test validates the ordering of products by decreasing price\x3c/p>","*Sort by desc name","*<p>This test validates ordering products in descending order by name\x3c/p>","*Add two red backpacks to cart without logging in","*<p>This test should validate the addition of two red backpacks to the cart\x3c/p>","*SELECT_ITEM"]);
 </script>
 <script type="text/javascript">
-window.output["stats"] = [[{"elapsed":"00:03:20","fail":0,"label":"All Tests","pass":8,"skip":0}],[{"elapsed":"00:00:25","fail":0,"label":"SELECT_ITEM","pass":1,"skip":0}],[{"elapsed":"00:03:20","fail":0,"id":"s1","label":"Cart-Local &amp; Login-Local &amp; Products-Local","name":"Cart-Local &amp; Login-Local &amp; Products-Local","pass":8,"skip":0},{"elapsed":"00:00:34","fail":0,"id":"s1-s1","label":"Cart-Local &amp; Login-Local &amp; Products-Local.Cart-Local","name":"Cart-Local","pass":1,"skip":0},{"elapsed":"00:00:54","fail":0,"id":"s1-s2","label":"Cart-Local &amp; Login-Local &amp; Products-Local.Login-Local","name":"Login-Local","pass":2,"skip":0},{"elapsed":"00:01:53","fail":0,"id":"s1-s3","label":"Cart-Local &amp; Login-Local &amp; Products-Local.Products-Local","name":"Products-Local","pass":5,"skip":0}]];
+window.output["stats"] = [[{"elapsed":"00:03:39","fail":0,"label":"All Tests","pass":8,"skip":0}],[{"elapsed":"00:00:30","fail":0,"label":"SELECT_ITEM","pass":1,"skip":0}],[{"elapsed":"00:03:39","fail":0,"id":"s1","label":"Tests","name":"Tests","pass":8,"skip":0},{"elapsed":"00:00:27","fail":0,"id":"s1-s1","label":"Tests.Cart","name":"Cart","pass":1,"skip":0},{"elapsed":"00:00:58","fail":0,"id":"s1-s2","label":"Tests.Login","name":"Login","pass":2,"skip":0},{"elapsed":"00:02:14","fail":0,"id":"s1-s3","label":"Tests.Products","name":"Products","pass":5,"skip":0}]];
 </script>
 <script type="text/javascript">
-window.output["baseMillis"] = 1721766446476;
+window.output["baseMillis"] = 1731967883694;
 </script>
 <script type="text/javascript">
-window.output["generated"] = 201200;
+window.output["generated"] = 220457;
 </script>
 <script type="text/javascript">
 window.output["expand_keywords"] = null;

@@ -36,12 +36,12 @@ Para executar os testes do APP (**Android-MyDemoAppRN.1.3.0.build-244.apk**) usa
 
 9. Execute os testes **`locais`** usando o seguinte comando:
     ```
-    robot -d logs/local/ -v ENVIRONMENT:local tests/.
+    robot -d logs/local/ -v ENVIRONMENT:local --variablefile config.yaml .\tests\.
     ```
 
 10. Para testes _remotos_ hospedados no **`BrowserStack`** use o seguinte comando:
     ```
-    browserstack-sdk robot -d logs/browserstack/ -v ENVIRONMENT:browserstack tests/.
+    browserstack-sdk robot -d logs/local/ -v ENVIRONMENT:browserstack --variablefile config.yaml .\tests\.
     ```
 
 Isso executará todos os testes presentes no diretório `tests/` usando o Robot Framework e o Appium.

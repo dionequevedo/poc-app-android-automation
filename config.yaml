@@ -1,4 +1,3 @@
-local: 
-  resource: "../resources/base-local.resource" 
-browserstack: 
-  resource: "../resources/base-browserstack.resource"
+recurso:
+  local: ../resources/connection-local.resource 
+  browserstack: ../resources/connection-browserstack.resource

@@ -1,26 +1,17 @@
 *** Settings ***
 Documentation       Product screen test suite.
 
-Library                     YAMLLibrary
+Library                     Collections
+
+Resource                    ../resources/base.resource
 
 Suite Setup                 Setup Environment
 Test Setup                  Start session
 Test Teardown               Finish session
 
-Variables
-
-${CONFIG}                   Load YAML               ../config.yaml
-${ENVIRONMENT}              Set Global Variable     ${ENVIRONMENT}
-
-*** Keywords ***
-Setup Environment 
-    ${RESOURCE}             Get From Dictionary 
-    ...                     ${CONFIG}       ${ENVIRONMENT}  resource 
-
-Log                         Using resource: ${RESOURCE}
-
 *** Test Cases ***
 Sort by asc price
+    [Tags]                 products    CT01-products
     [Documentation]        This test validates the ordering of products by increasing price
 
     Select sort button
@@ -29,6 +20,7 @@ Sort by asc price
     Validate first item    $7.99
 
 Sort by asc name
+    [Tags]                 products    CT02-products
     [Documentation]        This test validates ordering products in ascending order by name
 
     Select sort button
@@ -37,6 +29,7 @@ Sort by asc name
     Validate first item    Sauce Labs Backpack
 
 Sort by desc price
+    [Tags]                 products    CT03-products
     [Documentation]        This test validates the ordering of products by decreasing price
 
     Select sort button
@@ -45,6 +38,7 @@ Sort by desc price
     Validate first item    $49.99
 
 Sort by desc name
+    [Tags]                 products    CT04-products
     [Documentation]        This test validates ordering products in descending order by name
 
     Select sort button
@@ -53,7 +47,7 @@ Sort by desc name
     Validate first item    Test.allTheThings() T-Shirt
 
 Add two red backpacks to cart without logging in
-    [Tags]                 SELECT_ITEM
+    [Tags]                 products    CT05-products
     [Documentation]        This test should validate the addition of two red backpacks to the cart
 
     Validate product screen

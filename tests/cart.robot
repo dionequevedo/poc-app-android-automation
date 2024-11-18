@@ -1,27 +1,22 @@
 *** Settings ***
 Documentation       Cart test suite.
 
-Library                     YAMLLibrary
+Library                     Collections
+
+Resource                    ../resources/base.resource
 
 Suite Setup                 Setup Environment
 Test Setup                  Start session
 Test Teardown               Finish session
 
-Variables
+*** Variables ***
 
-${CONFIG}                   Load YAML               ../config.yaml
 ${ENVIRONMENT}              Set Global Variable     ${ENVIRONMENT}
-
-*** Keywords ***
-Setup Environment 
-    ${RESOURCE}             Get From Dictionary 
-    ...                     ${CONFIG}       ${ENVIRONMENT}  resource 
-
-Log                         Using resource: ${RESOURCE}
 
 *** Test Cases ***
 
 Being able to access the empty cart
+    [Tags]                 cart    CT01-cart
     [Documentation]    This test validates access to the empty cart
 
     Click on cart

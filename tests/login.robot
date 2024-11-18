@@ -1,31 +1,27 @@
 *** Settings ***
-Documentation       Login screen test suite.
+Documentation               Login screen test suite.
 
-Library                     YAMLLibrary
+Library                     Collections
+
+Resource                    ../resources/base.resource
 
 Suite Setup                 Setup Environment
 Test Setup                  Start session
 Test Teardown               Finish session
 
-Variables
+*** Variables ***
 
-${CONFIG}                   Load YAML               ../config.yaml
 ${ENVIRONMENT}              Set Global Variable     ${ENVIRONMENT}
+${RECURSO}                  Set Global Variable     &{RECURSO.${ENVIRONMENT}}
 ${USER}                     bob@example.com
 ${CORRECT_PASSWORD}         10203040
 ${INCORRECT_PASSWORD}       40203040
 
-*** Keywords ***
-Setup Environment 
-    ${RESOURCE}             Get From Dictionary 
-    ...                     ${CONFIG}       ${ENVIRONMENT}  resource 
-
-Log                         Using resource: ${RESOURCE}
-
 *** Test Cases ***
 
 Valid Login
-    [Documentation]        This test validates a valid login successfully.
+    [Tags]                  login    CT01-login
+    [Documentation]         This test validates a valid login successfully.
 
     Access hamburger menu
     Wait Until Page Contains            Log In
@@ -33,7 +29,8 @@ Valid Login
     Validate Home
 
 Validate Wrong Login
-    [Documentation]        This test validates a invalid login
+    [Tags]                  login    CT02-login
+    [Documentation]         This test validates a invalid login
 
     Access hamburger menu
     Wait Until Page Contains            Log In
