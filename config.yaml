@@ -1,0 +1,4 @@
+local: 
+  resource: "base-local.resource" 
+browserstack: 
+  resource: "base-browserstack.resource"
